@@ -1,0 +1,80 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "Karla";
+  src: url("./assets/fonts/Karla-VariableFont_wght.ttf")
+    format("truetype-variations");
+  font-weight: 200 800;
+}
+
+:root {
+  --green-light: hsl(148, 38%, 91%);
+  --green-medium: hsl(169, 82%, 27%);
+  --red: hsl(0, 66%, 54%);
+  --white: hsl(0, 0%, 100%);
+  --grey-medium: hsl(186, 15%, 59%);
+  --grey-dark: hsl(187, 24%, 22%);
+  --font-ff-karla: "Karla";
+  --font-ff-karla-italic: "Karla-italic";
+}
+
+body {
+  border: 3px solid red;
+  padding: 0 0.875rem;
+  background-color: var(--green-light);
+  min-height: 100vh;
+}
+
+form {
+  margin-top: 2.06rem;
+  padding: 1.875rem 1.5rem 1.5rem;
+  background-color: var(--white);
+  border-radius: 15px;
+}
+
+h1 {
+  margin-bottom: 2rem;
+  color: var(--grey-dark);
+}
+
+.input-control {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  color: var(--grey-dark);
+  display: flex;
+}
+
+label span {
+  margin-left: 0.625rem;
+  font-size: 0.8rem;
+  color: var(--green-medium);
+}
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+/* utility class */
+.karla-bold {
+  font-family: var(--font-ff-karla), sans-serif;
+  font-weight: 700;
+}
+
+.karla-regular {
+  font-family: var(--font-ff-karla), sans-serif;
+  font-weight: 400;
+}
