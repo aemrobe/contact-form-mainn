@@ -1,3 +1,4 @@
+import { IMGURL } from "../Config/config";
 import styles from "./SuccessMessage.module.css";
 
 function SuccessMessage() {
@@ -8,7 +9,7 @@ function SuccessMessage() {
       aria-live="assertive"
     >
       <div className={`${styles["success-message__title"]}`}>
-        <img src="/images/icon-success-check.svg" alt="" />
+        <img src={`${IMGURL}/images/icon-success-check.svg`} alt="" />
         <h2>Message Sent!</h2>
       </div>
 
