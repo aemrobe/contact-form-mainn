@@ -1,4 +1,4 @@
-import { IMGURL } from "../Config/config";
+import IMGURL from "../Config/config.js";
 import styles from "./SuccessMessage.module.css";
 
 function SuccessMessage() {
