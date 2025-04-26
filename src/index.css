@@ -25,14 +25,14 @@
 }
 
 body {
-  border: 3px solid red;
-  padding: 0 0.875rem;
+  padding: 2.06rem 0.875rem 0;
   background-color: var(--green-light);
+  font-family: var(--font-ff-karla);
+  font-weight: 400;
   min-height: 100vh;
 }
 
 form {
-  margin-top: 2.06rem;
   padding: 1.875rem 1.5rem 1.5rem;
   background-color: var(--white);
   border-radius: 15px;
@@ -50,22 +50,12 @@ h1 {
 
 label {
   color: var(--grey-dark);
-  display: flex;
 }
 
 label span {
   margin-left: 0.625rem;
   font-size: 0.8rem;
   color: var(--green-medium);
-}
-
-.attribution {
-  font-size: 11px;
-  text-align: center;
-}
-
-.attribution a {
-  color: hsl(228, 45%, 44%);
 }
 
 /* utility class */
@@ -77,4 +67,8 @@ label span {
 .karla-regular {
   font-family: var(--font-ff-karla), sans-serif;
   font-weight: 400;
+}
+
+.error {
+  border-color: var(--red) !important;
 }

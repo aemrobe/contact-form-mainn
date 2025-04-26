@@ -1,0 +1,63 @@
+.input-control__input-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-control__input-container label {
+  border: 2px solid red;
+  padding-left: 25px;
+  border: 1.5px solid var(--grey-medium);
+  border-radius: 8px;
+  padding: 0.8rem 1.3rem 0.8rem 3.5rem;
+  position: relative;
+}
+
+.input-control__input-container label:hover {
+  cursor: pointer;
+}
+
+.input-control__input-container label:nth-of-type(2) {
+  margin-top: 0.9rem;
+}
+
+.input-control__input-container label::before {
+  content: "";
+  position: absolute;
+  left: 1.3rem;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--grey-medium);
+  border-radius: 50%;
+}
+
+.input-control__input-container input {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 0;
+  width: 0;
+  opacity: 0;
+}
+
+.input-control__input-container input[type="radio"]:checked + label::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  left: 1.55rem;
+  width: 8px;
+  height: 8px;
+  background-color: var(--green-medium);
+  border-radius: 50%;
+}
+
+.input-control__input-container input[type="radio"]:checked + label,
+.input-control__input-container input:focus + label,
+.input-control__input-container input[type="radio"]:checked + label::before {
+  border-color: var(--green-medium);
+}

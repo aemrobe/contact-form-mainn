@@ -1,5 +1,21 @@
-@import "../index.css";
+:global(.input-control) > label {
+  margin-bottom: 0.6rem;
+  margin-top: 1.5rem;
+}
 
-.input-control > label {
-  color: var(--red);
+:global(.input-control) > label[for="first-name"] {
+  margin-top: 0;
+}
+
+.input-control input {
+  border: 1.5px solid var(--grey-medium);
+  border-radius: 8px;
+  padding: 1rem;
+  outline: none;
+}
+
+.input-control input:hover,
+.input-control input:focus {
+  cursor: pointer;
+  border-color: var(--green-medium);
 }

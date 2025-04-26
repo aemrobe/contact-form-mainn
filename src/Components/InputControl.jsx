@@ -1,6 +1,10 @@
-function InputControl({ type }) {
+import Error from "./Error";
+import styles from "./InputControl.module.css";
+
+function InputControl({ type, error, element }) {
+  // console.log("error.length", error);
   return (
-    <div className="input-control">
+    <div className={`input-control ${styles["input-control"]}`}>
       <label htmlFor={`${type}`}>
         {type
           .split("-")
@@ -8,7 +12,15 @@ function InputControl({ type }) {
           .join(" ")}{" "}
         <span>*</span>
       </label>
-      <input type="text" id={`${type}`} />
+      <input
+        type="text"
+        ref={element}
+        className={error && "error"}
+        aria-invalid={error ? true : false}
+        id={`${type}`}
+        aria-describedby={error ? type : null}
+      />
+      {error ? <Error id={type} error={error} /> : ""}
     </div>
   );
 }

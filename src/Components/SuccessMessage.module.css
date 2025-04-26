@@ -1,0 +1,30 @@
+.success-message {
+  background-color: var(--grey-dark);
+  padding: 1.68rem 1.43rem;
+  color: var(--white);
+  border-radius: 12px;
+  /* position: absolute;
+  top: 0;
+  width: 20.6rem;
+  margin: 0 auto;
+  transform: translateY(-100%); */
+}
+
+.success-message__title {
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.success-message__title img {
+  margin-right: 0.625rem;
+}
+
+.success-message__title h2 {
+  font-size: 1.3rem;
+}
+
+.success-message p {
+  text-align: center;
+  line-height: 1.4;
+}

@@ -1,0 +1,8 @@
+.message {
+  min-height: 15rem;
+  word-wrap: wrap;
+  border: 1.5px solid var(--grey-medium);
+  border-radius: 8px;
+  padding: 1rem;
+  outline: none;
+}

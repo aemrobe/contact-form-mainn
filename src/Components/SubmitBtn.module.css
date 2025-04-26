@@ -1,0 +1,19 @@
+.submit-btn {
+  font-size: 1.1rem;
+  outline: none;
+  padding: 1rem 0;
+  width: 100%;
+  background-color: var(--green-medium);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  transition: background-color 0.5s ease;
+}
+
+.submit-btn:hover {
+  background-color: #063f36;
+}
+
+.submit-btn:focus {
+  box-shadow: 0 0 0 3px var(--grey-medium);
+}
