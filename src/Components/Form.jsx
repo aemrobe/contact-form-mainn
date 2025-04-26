@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import Consent from "./Consent";
 import InputControl from "./InputControl";
 import Message from "./Message";
