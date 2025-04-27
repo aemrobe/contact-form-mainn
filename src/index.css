@@ -25,7 +25,7 @@
 }
 
 body {
-  padding: 2.06rem 0.875rem 0;
+  padding: 0 0.875rem 0;
   background-color: var(--green-light);
   font-family: var(--font-ff-karla);
   font-weight: 400;
@@ -36,6 +36,8 @@ form {
   padding: 1.875rem 1.5rem 1.5rem;
   background-color: var(--white);
   border-radius: 15px;
+  max-width: 29.18rem;
+  margin: 2.06rem auto 1.9rem;
 }
 
 h1 {
@@ -58,6 +60,14 @@ label span {
   color: var(--green-medium);
 }
 
+@media (min-width: 1100px) {
+  form {
+    max-width: 48rem;
+    margin: 6rem auto;
+    padding: 2.875rem 2.5rem;
+  }
+}
+
 /* utility class */
 .karla-bold {
   font-family: var(--font-ff-karla), sans-serif;
@@ -71,4 +81,8 @@ label span {
 
 .error {
   border-color: var(--red) !important;
+}
+
+.margin-top-0 {
+  margin-top: 0;
 }

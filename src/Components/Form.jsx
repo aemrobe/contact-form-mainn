@@ -5,6 +5,7 @@ import QueryTypeInputControl from "./QueryTypeInputControl";
 import SubmitBtn from "./SubmitBtn";
 import { useError } from "../Context/ErrorContext";
 import { useInputValue } from "../Context/InputValueContext";
+import styles from "./Form.module.css";
 
 function Form() {
   // Errors
@@ -22,6 +23,7 @@ function Form() {
 
   // InputValues and SuccessState
   const {
+    successState,
     setSuccessState,
     firstName,
     setFirstName,
@@ -136,10 +138,14 @@ function Form() {
   };
 
   return (
-    <form action="#" onSubmit={handleFormSubmit}>
+    <form
+      action="#"
+      onSubmit={handleFormSubmit}
+      className={`${successState && "margin-top-0"}`}
+    >
       <h1 className="karla-bold">Contact Us</h1>
       {/* Name Field */}
-      <div>
+      <div className={`${styles["input-control-wrapper"]}`}>
         <InputControl
           inputValue={firstName}
           setInputValue={setFirstName}

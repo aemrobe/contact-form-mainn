@@ -3,11 +3,8 @@
   padding: 1.68rem 1.43rem;
   color: var(--white);
   border-radius: 12px;
-  /* position: absolute;
-  top: 0;
-  width: 20.6rem;
-  margin: 0 auto;
-  transform: translateY(-100%); */
+  max-width: 29.18rem;
+  margin: 1.56rem auto 0;
 }
 
 .success-message__title {
@@ -27,4 +24,15 @@
 .success-message p {
   text-align: center;
   line-height: 1.4;
+  color: var(--green-light);
+}
+
+@media (min-width: 1100px) {
+  .success-message__title {
+    justify-content: flex-start;
+  }
+
+  .success-message p {
+    text-align: left;
+  }
 }

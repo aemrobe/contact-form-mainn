@@ -19,3 +19,9 @@
   cursor: pointer;
   border-color: var(--green-medium);
 }
+
+@media (min-width: 1100px) {
+  :global(.input-control) > label[for="last-name"] {
+    margin-top: 0;
+  }
+}

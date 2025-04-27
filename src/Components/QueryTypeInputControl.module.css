@@ -61,3 +61,24 @@
 .input-control__input-container input[type="radio"]:checked + label::before {
   border-color: var(--green-medium);
 }
+
+@media (min-width: 1100px) {
+  .input-control__input-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.875rem;
+  }
+
+  .input-control__input-container label {
+    flex-grow: 1;
+  }
+
+  .input-control__input-container label:nth-of-type(2) {
+    margin-top: 0;
+  }
+
+  :global(#query-type-error) {
+    width: 100%;
+    margin-top: 0;
+  }
+}
