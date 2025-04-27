@@ -1,8 +1,17 @@
+import { useError } from "../Context/ErrorContext";
+import { useInputValue } from "../Context/InputValueContext";
 import Error from "./Error";
 import styles from "./QueryTypeInputControl.module.css";
 
-function QueryTypeInputControl({ general, support, error }) {
+function QueryTypeInputControl() {
+  const { errorQueryType: error } = useError();
+  const { queryType, setQueryType } = useInputValue();
+
   const errorId = "query-type-error";
+
+  const handleQueryType = function (e) {
+    setQueryType(e.target.value);
+  };
 
   return (
     <div className="input-control">
@@ -20,7 +29,8 @@ function QueryTypeInputControl({ general, support, error }) {
           name="Query Type"
           id="general"
           value="General Enquiry"
-          ref={general}
+          checked={queryType === "General Enquiry"}
+          onChange={handleQueryType}
         />
 
         <label htmlFor="general">General Enquiry</label>
@@ -30,7 +40,8 @@ function QueryTypeInputControl({ general, support, error }) {
           name="Query Type"
           value="Support Request"
           id="support"
-          ref={support}
+          checked={queryType === "Support Request"}
+          onChange={handleQueryType}
         />
         <label htmlFor="support">Support Request</label>
 

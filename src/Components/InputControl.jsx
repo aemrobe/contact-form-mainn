@@ -1,8 +1,7 @@
 import Error from "./Error";
 import styles from "./InputControl.module.css";
 
-function InputControl({ type, error, element }) {
-  // console.log("error.length", error);
+function InputControl({ type, error, element, inputValue, setInputValue }) {
   return (
     <div className={`input-control ${styles["input-control"]}`}>
       <label htmlFor={`${type}`}>
@@ -18,6 +17,8 @@ function InputControl({ type, error, element }) {
         className={error && "error"}
         aria-invalid={error ? true : false}
         id={`${type}`}
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
         aria-describedby={error ? type : null}
       />
       {error ? <Error id={type} error={error} /> : ""}

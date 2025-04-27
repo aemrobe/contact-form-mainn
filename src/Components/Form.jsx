@@ -1,41 +1,41 @@
-import { useRef } from "react";
 import Consent from "./Consent";
 import InputControl from "./InputControl";
 import Message from "./Message";
 import QueryTypeInputControl from "./QueryTypeInputControl";
 import SubmitBtn from "./SubmitBtn";
-import { useForm } from "../Context/FormContext";
+import { useError } from "../Context/ErrorContext";
+import { useInputValue } from "../Context/InputValueContext";
 
 function Form() {
   // Errors
   const {
-    setSuccessState,
     errorFirstName,
     setErrorFirstName,
     errorLastName,
     setErrorLastName,
     errorEmail,
     setErrorEmail,
-    errorQueryType,
     setErrorQueryType,
-    errorMessage,
     setErrorMessage,
-    errorConsent,
     setErrorConsent,
-  } = useForm();
+  } = useError();
 
-  //Elements
-  const FirstNameEl = useRef(null);
-  const LastNameEl = useRef(null);
-  const EmailEl = useRef(null);
-  const MessageEl = useRef(null);
-
-  //Radio Buttons
-  const GeneralEnquiryOption = useRef(null);
-  const SupportRequestOption = useRef(null);
-
-  //CheckBox
-  const ConsetCheckBox = useRef(null);
+  // InputValues and SuccessState
+  const {
+    setSuccessState,
+    firstName,
+    setFirstName,
+    lastName,
+    setLastName,
+    email,
+    setEmail,
+    queryType,
+    setQueryType,
+    message,
+    setMessage,
+    consent,
+    setConsent,
+  } = useInputValue();
 
   // Validators
   function validateRequired(value) {
@@ -51,20 +51,11 @@ function Form() {
   };
 
   const validateQueryType = function () {
-    const isOption1Checked = GeneralEnquiryOption.current.checked;
-    const isOption2Checked = SupportRequestOption.current.checked;
-
-    return !isOption1Checked && !isOption2Checked
-      ? "Please select a query type"
-      : null;
+    return !queryType ? "Please select a query type" : null;
   };
 
   const validateConsent = function () {
-    const checkBoxChecked = ConsetCheckBox.current.checked;
-
-    console.log("checkbox", checkBoxChecked);
-
-    return !checkBoxChecked
+    return !consent
       ? "To submit this form, please consent to be contacted"
       : null;
   };
@@ -80,47 +71,48 @@ function Form() {
     return null;
   }
 
+  //Fields
+  const fields = [
+    {
+      value: firstName,
+      validators: [validateRequired],
+      setError: setErrorFirstName,
+    },
+    {
+      value: lastName,
+      validators: [validateRequired],
+      setError: setErrorLastName,
+    },
+    {
+      value: email,
+      validators: [validateRequired, validateEmail],
+      setError: setErrorEmail,
+    },
+    {
+      value: queryType,
+      validators: [validateQueryType],
+      setError: setErrorQueryType,
+    },
+    {
+      value: message,
+      validators: [validateRequired],
+      setError: setErrorMessage,
+    },
+    {
+      value: consent,
+      validators: [validateConsent],
+      setError: setErrorConsent,
+    },
+  ];
+
   const handleFormSubmit = function (e) {
     const formError = [];
 
     e.preventDefault();
 
-    const fields = [
-      {
-        element: FirstNameEl.current,
-        validators: [validateRequired],
-        setError: setErrorFirstName,
-      },
-      {
-        element: LastNameEl.current,
-        validators: [validateRequired],
-        setError: setErrorLastName,
-      },
-      {
-        element: EmailEl.current,
-        validators: [validateRequired, validateEmail],
-        setError: setErrorEmail,
-      },
-      {
-        element: GeneralEnquiryOption,
-        validators: [validateQueryType],
-        setError: setErrorQueryType,
-      },
-      {
-        element: MessageEl.current,
-        validators: [validateRequired],
-        setError: setErrorMessage,
-      },
-      {
-        element: ConsetCheckBox,
-        validators: [validateConsent],
-        setError: setErrorConsent,
-      },
-    ];
-
     for (const field of fields) {
       console.log("field", field);
-      const fieldError = validateField(field.validators, field.element.value);
+      const fieldError = validateField(field.validators, field.value);
 
       if (fieldError) {
         field.setError(fieldError);
@@ -132,6 +124,12 @@ function Form() {
 
     if (formError.length === 0) {
       setSuccessState(true);
+      setFirstName("");
+      setLastName("");
+      setEmail("");
+      setQueryType(null);
+      setMessage("");
+      setConsent(false);
     } else {
       setSuccessState(false);
     }
@@ -143,32 +141,31 @@ function Form() {
       {/* Name Field */}
       <div>
         <InputControl
+          inputValue={firstName}
+          setInputValue={setFirstName}
           error={errorFirstName}
           type={"first-name"}
-          element={FirstNameEl}
         />
         <InputControl
+          inputValue={lastName}
+          setInputValue={setLastName}
           error={errorLastName}
           type={"last-name"}
-          element={LastNameEl}
         />
       </div>
       {/* Email Address */}
       <InputControl
+        inputValue={email}
+        setInputValue={setEmail}
         error={errorEmail}
         type={"email-address"}
-        element={EmailEl}
       />
       {/* Query Type */}
-      <QueryTypeInputControl
-        error={errorQueryType}
-        general={GeneralEnquiryOption}
-        support={SupportRequestOption}
-      />
+      <QueryTypeInputControl />
       {/* Message */}
-      <Message element={MessageEl} error={errorMessage} />
+      <Message />
       {/*Consent*/}
-      <Consent element={ConsetCheckBox} error={errorConsent} />
+      <Consent />
       {/* Submit button */}
       <SubmitBtn />
     </form>

@@ -1,15 +1,25 @@
+import { useError } from "../Context/ErrorContext";
+import { useInputValue } from "../Context/InputValueContext";
 import styles from "./Consent.module.css";
 import Error from "./Error";
 
-function Consent({ error, element }) {
+function Consent() {
   const errorId = "consent-error";
+
+  const { errorConsent: error } = useError();
+  const { consent, setConsent } = useInputValue();
+
+  const handleConsent = function (e) {
+    setConsent(e.target.checked);
+  };
 
   return (
     <div className={`${styles.consent}`}>
       <input
         aria-describedby={error ? errorId : null}
         aria-invalid={!!error}
-        ref={element}
+        checked={consent}
+        onChange={handleConsent}
         type="checkbox"
         name="consent"
         id="accept"

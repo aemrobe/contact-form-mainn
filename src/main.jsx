@@ -2,12 +2,13 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.jsx";
-import { FormProvider } from "./Context/FormContext.jsx";
+
+import { InputValueProvider } from "./Context/InputValueContext.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <FormProvider>
+    <InputValueProvider>
       <App />
-    </FormProvider>
+    </InputValueProvider>
   </StrictMode>
 );

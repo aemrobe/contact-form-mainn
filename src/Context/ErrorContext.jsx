@@ -1,9 +1,9 @@
 import { createContext, useContext, useState } from "react";
 
-const FormContext = createContext();
+const ErrorContext = createContext();
 
-function FormProvider({ children }) {
-  const [successState, setSuccessState] = useState(false);
+function ErrorProvider({ children }) {
+  //Errors
   const [errorFirstName, setErrorFirstName] = useState("");
   const [errorLastName, setErrorLastName] = useState("");
   const [errorEmail, setErrorEmail] = useState("");
@@ -12,10 +12,8 @@ function FormProvider({ children }) {
   const [errorConsent, setErrorConsent] = useState("");
 
   return (
-    <FormContext.Provider
+    <ErrorContext.Provider
       value={{
-        successState,
-        setSuccessState,
         errorFirstName,
         setErrorFirstName,
         errorLastName,
@@ -31,12 +29,12 @@ function FormProvider({ children }) {
       }}
     >
       {children}
-    </FormContext.Provider>
+    </ErrorContext.Provider>
   );
 }
 
-function useForm() {
-  const context = useContext(FormContext);
+function useError() {
+  const context = useContext(ErrorContext);
 
   if (context === undefined)
     throw new Error("you are using form value outside of fthe form provider");
@@ -44,4 +42,4 @@ function useForm() {
   return context;
 }
 
-export { FormProvider, useForm };
+export { ErrorProvider, useError };

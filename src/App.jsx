@@ -1,16 +1,19 @@
 import Footer from "./Components/Footer";
 import Form from "./Components/Form";
 import SuccessMessage from "./Components/SuccessMessage";
-import { useForm } from "./Context/FormContext";
+import { ErrorProvider } from "./Context/ErrorContext";
+import { useInputValue } from "./Context/InputValueContext";
 
 function App() {
-  const { successState } = useForm();
+  const { successState } = useInputValue();
 
   return (
     <>
       {successState && <SuccessMessage />}
-      <Form />
-      <Footer />
+      <ErrorProvider>
+        <Form />
+        <Footer />
+      </ErrorProvider>
     </>
   );
 }
