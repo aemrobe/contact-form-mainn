@@ -8,7 +8,10 @@ function SuccessMessage() {
       aria-live="assertive"
     >
       <div className={`${styles["success-message__title"]}`}>
-        <img src="/images/icon-success-check.svg" alt="" />
+        <img
+          src={`${import.meta.env.BASE_URL + "/images/icon-success-check.svg"}`}
+          alt=""
+        />
         <h2>Message Sent!</h2>
       </div>
 
