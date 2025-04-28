@@ -11,7 +11,7 @@ function Message() {
 
   return (
     <div className="input-control">
-      <label htmlFor={`${styles["message"]}`}>
+      <label htmlFor={errorId}>
         Message
         <span>*</span>
       </label>

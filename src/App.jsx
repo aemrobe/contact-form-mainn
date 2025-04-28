@@ -8,13 +8,13 @@ function App() {
   const { successState } = useInputValue();
 
   return (
-    <>
+    <main>
       {successState && <SuccessMessage />}
       <ErrorProvider>
         <Form />
         <Footer />
       </ErrorProvider>
-    </>
+    </main>
   );
 }
 
